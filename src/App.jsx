@@ -26,11 +26,36 @@ function App() {
     setTodos(changedTodos);
   };
 
+  const todoToogleCompleted = (todoId) => {
+    // const changedTodos = todos.map((todo) => {
+    //   const todoEdit = {
+    //     ...todo,
+    //     completed: !todo.completed,
+    //   };
+
+    //   if (todo.id === todoID) {
+    //     return todoEdit;
+    //   } else {
+    //     return todo;
+    //   }
+    // });
+
+    const changedTodos = todos.map((todo) =>
+      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+    );
+
+    setTodos(changedTodos);
+  };
+
   return (
     <div className="container mt-4 App">
       <div className="row">
         <div className="col-8">
-          <TodoList todos={todos} todoDelete={todoDelete} />
+          <TodoList
+            todos={todos}
+            todoDelete={todoDelete}
+            todoToogleCompleted={todoToogleCompleted}
+          />
         </div>
         <div className="col-4">
           <TodoForm />

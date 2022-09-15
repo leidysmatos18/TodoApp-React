@@ -1,13 +1,18 @@
 import React from "react";
 
-const Todo = ({ todoProps, todoDelete }) => {
+const Todo = ({ todoProps, todoDelete, todoToogleCompleted }) => {
   return (
     <div className="card mt-2">
       <div className="card-body">
         <h3 className="card-title text-center">
           {todoProps.title}
-          <button className="btn btn-sm btn-outline-success ms-2">
-            Terminar
+          <button
+            className={`btn btn-sm  ms-2 ${
+              todoProps.completed ? "btn-outline-success" : "btn-success"
+            } `}
+            onClick={() => todoToogleCompleted(todoProps.id)}
+          >
+            {todoProps.completed ? "Terminado" : "Terminar"}
           </button>
         </h3>
         <p className="card-text text-center">{todoProps.description}</p>
